@@ -5,7 +5,7 @@ describe('Navigator', () => {
     describe('navigate', () => {
         let navigator;
         beforeEach(() => {
-           navigator = new Navigator();
+           navigator = new Navigator(false);
         });
 
         it('should default coords 0,0', () => {
@@ -39,6 +39,20 @@ describe('Navigator', () => {
             navigator.getCoordinates().x.should.equal(50);
             navigator.getCoordinates().y.should.equal(100);
             navigator.getCoordinates().distanceFromOrigin().should.equal(150);
+        })
+    });
+
+    describe('navigate - dont revisit', () => {
+        let navigator;
+        beforeEach(() => {
+            navigator = new Navigator(true);
+        });
+
+        it("should finish when visiting previously visited coordinate", () => {
+            navigator.navigate(['R8', 'R4', 'R4', 'R8']);
+            navigator.getCoordinates().x.should.equal(4);
+            navigator.getCoordinates().y.should.equal(0);
+            navigator.getCoordinates().distanceFromOrigin().should.equal(4);
         })
     });
 });

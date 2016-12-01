@@ -1,11 +1,11 @@
 const fs = require("fs"),
-      Navigator = require('./Navigator').Navigator;
+    Navigator = require('./Navigator').Navigator;
 
 fs.readFile("one/input.txt", "utf8", function(err, data) {
     if(err) {return console.log(err);}
 
     const instructions = data.split(", ");
-    const navigator = new Navigator();
+    const navigator = new Navigator(true);
 
     navigator.navigate(instructions);
 

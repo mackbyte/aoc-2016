@@ -4,7 +4,8 @@
   "description": "Challenges for aoc 2016",
   "main": "index.js",
   "scripts": {
-    "one": "node one/index.js",
+    "one": "node one/one.js",
+    "one-2": "node one/two",
     "one-test": "./node_modules/mocha/bin/_mocha 'one/*.test.js'"
   },
   "author": "",
