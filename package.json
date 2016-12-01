@@ -1,0 +1,16 @@
+{
+  "name": "aoc-2016",
+  "version": "1.0.0",
+  "description": "Challenges for aoc 2016",
+  "main": "index.js",
+  "scripts": {
+    "one": "node one/index.js",
+    "one-test": "./node_modules/mocha/bin/_mocha 'one/*.test.js'"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  }
+}
