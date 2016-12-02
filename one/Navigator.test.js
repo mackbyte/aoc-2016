@@ -53,6 +53,13 @@ describe('Navigator', () => {
             navigator.getCoordinates().x.should.equal(4);
             navigator.getCoordinates().y.should.equal(0);
             navigator.getCoordinates().distanceFromOrigin().should.equal(4);
-        })
+        });
+
+        it("should finish when visiting previously visited coordinate - including origin", () => {
+            navigator.navigate(['R4', 'R4', 'R4', 'R8']);
+            navigator.getCoordinates().x.should.equal(0);
+            navigator.getCoordinates().y.should.equal(0);
+            navigator.getCoordinates().distanceFromOrigin().should.equal(0);
+        });
     });
 });

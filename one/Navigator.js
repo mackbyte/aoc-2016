@@ -13,26 +13,24 @@ class Navigator {
     }
 
     navigate(instructions) {
-        let visits = [];
-        let BreakException = {};
+        let visits = [new Coordinate(0, 0)];
+        const BreakException = {};
         try {
             instructions.forEach(instruction => {
-                let [direction, ...value] = instruction;
-                value = value.join('');
-                let facing = this.position.turn(direction);
-
-                let move = facing.multiplier.map(pos => pos * value);
-                var nextCoordinate = this.coordinate.add(new Coordinate(move[0], move[1]));
+                const direction = instruction.slice(0, 1),
+                    value = instruction.slice(1),
+                    facing = this.position.turn(direction),
+                    move = facing.multiplier.map(pos => pos * value),
+                    nextCoordinate = this.coordinate.add(new Coordinate(move[0], move[1]));
 
                 if(this.dontRevisit) {
-                    let route = this.coordinate.route(nextCoordinate);
-                    route.forEach(point => {
-                        visits.push(point);
-                        this.coordinate = point;
-                        if(visits.filter(loc => loc.equals(point)).length > 1) {
+                    while(!this.coordinate.equals(nextCoordinate)) {
+                        this.coordinate = this.coordinate.add(new Coordinate(facing.multiplier[0], facing.multiplier[1]));
+                        visits.push(this.coordinate);
+                        if(visits.filter(loc => loc.equals(this.coordinate)).length > 1) {
                             throw BreakException;
                         }
-                    })
+                    }
                 } else {
                     this.coordinate = nextCoordinate;
                 }
