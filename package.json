@@ -6,7 +6,10 @@
   "scripts": {
     "one": "node one/one.js",
     "one-2": "node one/two",
-    "one-test": "./node_modules/mocha/bin/_mocha 'one/*.test.js'"
+    "one-test": "./node_modules/mocha/bin/_mocha 'one/*.test.js'",
+    "two": "node two/one.js",
+    "two-2": "node two/two",
+    "two-test": "./node_modules/mocha/bin/_mocha 'two/*.test.js'"
   },
   "author": "",
   "license": "ISC",
