@@ -1,8 +1,9 @@
 const KeyPad = require('./KeyPad').KeyPad;
+const KeyPad2 = require('./KeyPad2').KeyPad2;
 
 class KeyInstructionReader {
-    constructor() {
-        this.keyPad = new KeyPad();
+    constructor(partTwo) {
+        this.keyPad = partTwo ? new KeyPad2() : new KeyPad();
     }
 
     read(instructionList) {
