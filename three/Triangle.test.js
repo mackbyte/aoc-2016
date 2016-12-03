@@ -38,11 +38,5 @@ describe('Triangle', () => {
 
             triangle.isValid().should.equal(false);
         });
-
-        it('should convert strings to numbers', () => {
-            let triangle = new Triangle(['424', '797', '125']);
-
-            triangle.isValid().should.equal(false);
-        });
     });
 });

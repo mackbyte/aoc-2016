@@ -1,6 +1,6 @@
 class Triangle {
     constructor(dimensions) {
-        this.dimensions = dimensions.map(num=> parseInt(num));
+        this.dimensions = dimensions;
     }
 
     isValid() {

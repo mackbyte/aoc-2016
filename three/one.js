@@ -8,7 +8,7 @@ fs.readFile("three/input.txt", "utf8", function(err, data) {
 
     let total = 0;
     triangles.forEach(triangle => {
-        let dimensions = triangle.trim().split(/ +/),
+        let dimensions = triangle.trim().split(/ +/).map(num => parseInt(num)),
             tri = new Triangle(dimensions);
 
         if(tri.isValid()) { total++; }
