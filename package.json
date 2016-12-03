@@ -9,7 +9,10 @@
     "one-test": "./node_modules/mocha/bin/_mocha 'one/*.test.js'",
     "two": "node two/one.js",
     "two-2": "node two/two",
-    "two-test": "./node_modules/mocha/bin/_mocha 'two/*.test.js'"
+    "two-test": "./node_modules/mocha/bin/_mocha 'two/*.test.js'",
+    "three": "node three/one.js",
+    "three-2": "node three/two.js",
+    "three-test": "./node_modules/mocha/bin/_mocha 'three/*.test.js'"
   },
   "author": "",
   "license": "ISC",
