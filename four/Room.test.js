@@ -53,4 +53,22 @@ describe('Room', () => {
             room.isReal().should.equal(false);
         });
     });
+
+    describe('shift', () => {
+        it('should rotate letter through the alphabet by specified number', () => {
+            Room.shift('a', 3).should.equal('d');
+        });
+
+        it('should wrap around to start of alphabet if shift amount is larger than 26', () => {
+            Room.shift('z', 343).should.equal('e');
+        });
+    });
+
+    describe('decrypt', () => {
+        it('should decrypt name using sectorId as amount to shift', () => {
+            let room = new Room('qzmt-zixmtkozy-ivhz-343[zimth]');
+
+            room.decrypt().should.equal('very encrypted name')
+        });
+    });
 });

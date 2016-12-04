@@ -7,8 +7,12 @@ class RoomCodeReader {
         return roomCodes.map(roomCode => new Room(roomCode))
     }
 
+    realRooms(rooms) {
+        return rooms.filter(room => room.isReal());
+    }
+
     total(rooms) {
-        return rooms.filter(room => room.isReal())
+        return this.realRooms(rooms)
                     .map(realRoom => realRoom.sectorId)
                     .reduce((a, b) => a+b, 0);
     }

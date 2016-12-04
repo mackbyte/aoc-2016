@@ -38,6 +38,17 @@ class Room {
 
         return checksum === this.checksum;
     }
+
+    static shift(letter, amount) {
+        const alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+        return alphabet[(amount + alphabet.indexOf(letter)) % 26];
+    }
+
+    decrypt() {
+        return this.name.split('')
+            .map(char => char === '-' ? ' ' : Room.shift(char, this.sectorId))
+            .join('')
+    }
 }
 
 module.exports = {
