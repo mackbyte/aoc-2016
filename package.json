@@ -15,7 +15,10 @@
     "three-test": "./node_modules/mocha/bin/_mocha 'three/*.test.js'",
     "four": "node four/one.js",
     "four-2": "node four/two.js",
-    "four-test": "./node_modules/mocha/bin/_mocha 'four/*.test.js'"
+    "four-test": "./node_modules/mocha/bin/_mocha 'four/*.test.js'",
+    "five": "node five/one.js",
+    "five-2": "node five/two.js",
+    "five-test": "./node_modules/mocha/bin/_mocha 'five/*.test.js'"
   },
   "author": "",
   "license": "ISC",
