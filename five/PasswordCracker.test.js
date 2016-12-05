@@ -15,4 +15,11 @@ describe('PasswordCracker', () => {
             cracker.crack().should.equal('18f47a30');
         }).timeout(30000);
     });
+
+    describe('crack2', () => {
+        it('should return cracked password', () => {
+            let cracker = new PasswordCracker('abc');
+            cracker.crack2().should.equal('05ace8e3');
+        }).timeout(30000);
+    })
 });
