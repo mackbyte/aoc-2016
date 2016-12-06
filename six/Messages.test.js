@@ -51,4 +51,36 @@ describe('Messages', () => {
             messages.correctMessage().should.equal('easter');
         });
     });
+
+    describe('leastCommonCharacter', () => {
+       it('should return least common character from string', () => {
+           Messages.leastCommonCharacter('ederatsrnnstvvde').should.equal('a')
+       });
+    });
+
+    describe('correctMessage2', () => {
+        it('should correct the message by using the most common character of each column', () => {
+            let messages = new Messages();
+            messages.loadMessages([
+                'eedadn',
+                'drvtee',
+                'eandsr',
+                'raavrd',
+                'atevrs',
+                'tsrnev',
+                'sdttsa',
+                'rasrtv',
+                'nssdts',
+                'ntnada',
+                'svetve',
+                'tesnvt',
+                'vntsnd',
+                'vrdear',
+                'dvrsen',
+                'enarar'
+            ]);
+
+            messages.correctMessage2().should.equal('advent');
+        });
+    });
 });
