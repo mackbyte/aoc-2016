@@ -21,7 +21,10 @@
     "five-test": "./node_modules/mocha/bin/_mocha 'five/*.test.js'",
     "six": "node six/one.js",
     "six-2": "node six/two.js",
-    "six-test": "./node_modules/mocha/bin/_mocha 'six/*.test.js'"
+    "six-test": "./node_modules/mocha/bin/_mocha 'six/*.test.js'",
+    "seven": "node seven/one.js",
+    "seven-2": "node seven/two.js",
+    "seven-test": "./node_modules/mocha/bin/_mocha 'seven/*.test.js'"
   },
   "author": "",
   "license": "ISC",
