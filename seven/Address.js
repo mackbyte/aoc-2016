@@ -39,6 +39,55 @@ class Address {
         return found;
     }
 
+    getCharWraps(message) {
+        const chars = message.split('');
+
+        let wraps = [];
+        chars.forEach((char, index) => {
+            if(index < chars.length-2) {
+                if(char === chars[index+2]) {
+                    wraps.push(char + chars[index+1] + chars[index+2])
+                }
+            }
+        });
+
+        return wraps;
+    }
+
+    reverseWrap(wrap) {
+        const chars = wrap.split('');
+        return chars[1] + chars[0] + chars[1]
+    }
+
+    supportsSSL() {
+        const { inside, outside } = this.extractParts();
+
+        let insidesWraps = [];
+        inside.forEach(message => {
+            insidesWraps = insidesWraps.concat(this.getCharWraps(message));
+        });
+
+        if(insidesWraps.length === 0) {
+            return false
+        } else {
+            let reversedWraps = insidesWraps.map(wrap => this.reverseWrap(wrap));
+
+            let outsideWraps = [];
+            outside.forEach(message => {
+                outsideWraps = outsideWraps.concat(this.getCharWraps(message))
+            });
+
+            let matched = false;
+            reversedWraps.forEach(wrap => {
+                if(outsideWraps.indexOf(wrap) > -1) {
+                    matched = true;
+                }
+            });
+
+            return matched;
+        }
+    }
+
     supportsTLS() {
         const { inside, outside } = this.extractParts();
 
