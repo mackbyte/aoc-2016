@@ -34,6 +34,25 @@ class Decompressor {
 
         return decompressed + compressed;
     }
+
+    count(message = this.compressed, start=0, length = this.compressed.length) {
+        let size = 0,
+            i = start;
+
+        while(i < start+length) {
+            if(message.charAt(i) === '(') {
+                let marker = this.nextMarker(message.slice(i));
+                i += marker.marker.length;
+                size += marker.count * this.count(message, i, marker.charIdx, true);
+                i += marker.charIdx;
+            } else {
+                size++;
+                i++;
+            }
+        }
+
+        return size;
+    }
 }
 
 module.exports = {
