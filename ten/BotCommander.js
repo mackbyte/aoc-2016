@@ -57,6 +57,15 @@ class BotCommander {
         });
     }
 
+    _add(repo, number, value) {
+        let dest = repo.get(number);
+        dest ? dest.carry(value) : repo.set(number, new Bot(value));
+    }
+
+    _getRepo(type) {
+        return type === 'bot' ? this.bots : this.outputs;
+    }
+
     move(commands) {
         let notReadyCommands = commands.filter(command => {
             let bot = this.bots.get(command.from.number);
@@ -64,37 +73,9 @@ class BotCommander {
                 let lowCarry = bot.getCarry('low'),
                     highCarry = bot.getCarry('high');
 
-                if(command.to.low.type === 'bot') {
-                    let lowBot = this.bots.get(command.to.low.number);
-                    if(lowBot) {
-                        lowBot.carry(lowCarry);
-                    } else {
-                        this.bots.set(command.to.low.number, new Bot(lowCarry));
-                    }
-                } else {
-                    let lowOutput = this.outputs.get(command.to.low.number);
-                    if(lowOutput) {
-                        lowOutput.carry(lowCarry);
-                    } else {
-                        this.outputs.set(command.to.low.number, new Bot(lowCarry));
-                    }
-                }
+                this._add(this._getRepo(command.to.low.type), command.to.low.number, lowCarry);
+                this._add(this._getRepo(command.to.high.type), command.to.high.number, highCarry);
 
-                if(command.to.high.type === 'bot') {
-                    let highBot = this.bots.get(command.to.high.number);
-                    if(highBot) {
-                        highBot.carry(highCarry);
-                    } else {
-                        this.bots.set(command.to.high.number, new Bot(highCarry));
-                    }
-                } else {
-                    let highOutput = this.outputs.get(command.to.high.number);
-                    if(highOutput) {
-                        highOutput.carry(highCarry);
-                    } else {
-                        this.outputs.set(command.to.high.number, new Bot(highCarry));
-                    }
-                }
                 return false;
             }
             return true;
