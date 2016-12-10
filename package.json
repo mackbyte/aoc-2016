@@ -30,7 +30,10 @@
     "eight-test": "./node_modules/mocha/bin/_mocha 'eight/*.test.js'",
     "nine": "node nine/one.js",
     "nine-2": "node nine/two.js",
-    "nine-test": "./node_modules/mocha/bin/_mocha 'nine/*.test.js'"
+    "nine-test": "./node_modules/mocha/bin/_mocha 'nine/*.test.js'",
+    "ten": "node ten/one.js",
+    "ten-2": "node ten/two.js",
+    "ten-test": "./node_modules/mocha/bin/_mocha 'ten/*.test.js'"
   },
   "author": "",
   "license": "ISC",
