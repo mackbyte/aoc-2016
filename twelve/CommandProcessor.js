@@ -20,7 +20,6 @@ class CommandProcessor {
 
         for(let i = 0; i < commands.length;) {
             let command = commands[i];
-            console.log(command);
             if(command.startsWith('cpy')) {
                 let match = copyRegex.exec(command),
                     from = match[1],
@@ -52,8 +51,6 @@ class CommandProcessor {
 
                 compareVal !== 0 ? i += jumpVal : i++;
             }
-            console.log(this.registers);
-            console.log(i);
         }
     }
 }
