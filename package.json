@@ -34,6 +34,9 @@
     "ten": "node ten/one.js",
     "ten-2": "node ten/two.js",
     "ten-test": "./node_modules/mocha/bin/_mocha 'ten/*.test.js'",
+    "eleven": "node eleven/one.js",
+    "eleven-2": "node eleven/two.js",
+    "eleven-test": "./node_modules/mocha/bin/_mocha 'eleven/*.test.js'",
     "twelve": "node twelve/one.js",
     "twelve-2": "node twelve/two.js",
     "twelve-test": "./node_modules/mocha/bin/_mocha 'twelve/*.test.js'"
