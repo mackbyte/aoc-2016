@@ -30,6 +30,29 @@ class Simulation {
 
         return this.graph.getNode(num).data.path;
     }
+
+    solveLongest() {
+        let num,
+            completedStates = [];
+
+        while(this.queue.length > 0) {
+            num = this.queue.shift();
+            let room = this.graph.getNode(num).data,
+                moves = room.getMoves();
+
+            if(!room.completed()) {
+                moves.forEach(move => {
+                    let newRoom = room.makeMove(move);
+                    this.queue.push(this.graph.size());
+                    this.graph.addNode(this.graph.size(), newRoom, [num]);
+                });
+            } else {
+                completedStates.push(num);
+            }
+        }
+
+        return Math.max(...completedStates.map(state => this.graph.getNode(state).data.path.length));
+    }
 }
 
 module.exports = {
