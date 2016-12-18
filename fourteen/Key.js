@@ -1,32 +1,34 @@
 const crypto = require('crypto');
 
 class Key {
-    constructor(input) {
+    constructor(input, stretch = false) {
         this.input = input;
+        this.hash = stretch ? this.createStretchedHash() : this.createHash();
     }
 
-    hash() {
-        return crypto.createHash('md5')
+    createHash() {
+        let digest = crypto.createHash('md5')
             .update(this.input)
             .digest('hex');
+        return digest;
     }
 
-    potential() {
-        let hash = this.hash(),
-            three = null,
-            five = null;
+    createStretchedHash() {
+        let digest = crypto.createHash('md5')
+            .update(this.input)
+            .digest('hex');
 
-        for(let i = 0; i < hash.length-2; i++) {
-            if(hash.charAt(i) === hash.charAt(i+1) && hash.charAt(i) == hash.charAt(i+2)) {
-                if(hash.charAt(i) === hash.charAt(i+3) && hash.charAt(i) === hash.charAt(i+4)) {
-                    five = new Array(6).join(hash.charAt(i));
-                }
-                three = new Array(4).join(hash.charAt(i));
-                break;
-            }
+        for(let i = 0; i < 2016; i++) {
+            digest = crypto.createHash('md5')
+                .update(digest)
+                .digest('hex');
         }
 
-        return three || five ? {three, five} : null;
+        return digest;
+    }
+
+    match() {
+        return this.hash.match(/(.)\1{2}/);
     }
 }
 

@@ -12,38 +12,46 @@ describe('Key', () => {
     describe('hash', () => {
         it('should create hash from input', () => {
             let key = new Key('abc18');
-            key.hash().should.equal('0034e0923cc38887a57bd7b1d4f953df');
+            key.createHash().should.equal('0034e0923cc38887a57bd7b1d4f953df');
         });
     });
 
-    describe('potential', () => {
+    describe('createStretchedHash', () => {
+        it('should create hash from input', () => {
+            let key = new Key('abc22551');
+            key.createStretchedHash().should.equal('2df6e9378c3c53abed6d3508b6285fff');
+        });
+    });
+
+    describe('match', () => {
         it('should return potential key with characters that are repeated 3 times', () => {
             let key = new Key('abc18');
-            key.potential().should.deep.equal({
-                three: '888',
-                five: null
-            });
+            let match = key.match();
+            match[1].should.deep.equal('8');
+        });
+
+        it('should return potential key with characters that are repeated 3 times at end of the string', () => {
+            let key = new Key('abc22551', true);
+            let match = key.match();
+            match[1].should.deep.equal('f');
         });
 
         it('should return potential key with characters that are repeated 3 times', () => {
             let key = new Key('abc39');
-            key.potential().should.deep.equal({
-                three: 'eee',
-                five: null
-            });
+            let match = key.match();
+            match[1].should.deep.equal('e');
         });
 
         it('should return potential key with characters that are repeated 5 times', () => {
             let key = new Key('abc816');
-            key.potential().should.deep.equal({
-                three: 'eee',
-                five: 'eeeee'
-            });
+            let match = key.match();
+            match[1].should.deep.equal('e');
         });
 
         it('should return nothing if not found either', () => {
             let key = new Key('abc1');
-            should.not.exist(key.potential());
+            let match = key.match();
+            should.not.exist(match);
         });
     });
 });

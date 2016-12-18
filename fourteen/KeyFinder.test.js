@@ -6,7 +6,6 @@ describe('KeyFinder', () => {
         it('should create key finder with input and current iteration of 0', () => {
             let finder = new KeyFinder('abc');
             finder.input.should.equal('abc');
-            finder.current.should.equal(-1);
         });
     });
 
@@ -15,5 +14,10 @@ describe('KeyFinder', () => {
             let finder = new KeyFinder('abc');
             finder.find().should.equal(22728);
         }).timeout(30000);
+
+        it('should return 22551 for sample with stretch hashing', () => {
+            let finder = new KeyFinder('abc', true);
+            finder.find().should.equal(22551);
+        }).timeout(120000);
     });
 });
