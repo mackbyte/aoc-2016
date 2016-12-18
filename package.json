@@ -42,7 +42,10 @@
     "twelve-test": "./node_modules/mocha/bin/_mocha 'twelve/*.test.js'",
     "thirteen": "node thirteen/one.js",
     "thirteen-2": "node thirteen/two.js",
-    "thirteen-test": "./node_modules/mocha/bin/_mocha 'thirteen/*.test.js'"
+    "thirteen-test": "./node_modules/mocha/bin/_mocha 'thirteen/*.test.js'",
+    "fourteen": "node fourteen/one.js",
+    "fourteen-2": "node fourteen/two.js",
+    "fourteen-test": "./node_modules/mocha/bin/_mocha 'fourteen/*.test.js'"
   },
   "author": "",
   "license": "ISC",
