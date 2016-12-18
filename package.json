@@ -48,7 +48,10 @@
     "fourteen-test": "./node_modules/mocha/bin/_mocha 'fourteen/*.test.js'",
     "fifteen": "node fifteen/one.js",
     "fifteen-2": "node fifteen/two.js",
-    "fifteen-test": "./node_modules/mocha/bin/_mocha 'fifteen/*.test.js'"
+    "fifteen-test": "./node_modules/mocha/bin/_mocha 'fifteen/*.test.js'",
+    "sixteen": "node sixteen/one.js",
+    "sixteen-2": "node sixteen/two.js",
+    "sixteen-test": "./node_modules/mocha/bin/_mocha 'sixteen/*.test.js'"
   },
   "author": "",
   "license": "ISC",
