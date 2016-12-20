@@ -56,4 +56,11 @@ describe('Range', () => {
             range.inRange(11).should.equal(false);
         });
     });
+
+    describe('size', () => {
+        it('should return size of range', () => {
+            let range = new Range(1, 10);
+            range.size().should.equal(10);
+        });
+    });
 });

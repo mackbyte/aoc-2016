@@ -72,7 +72,7 @@ describe('Ranges', () => {
     });
 
     describe('find', () => {
-        it('should find the smallest number thats no in a range', () => {
+        it('should find the smallest number thats not in a range', () => {
             let ranges = new Ranges([
                 '5-8',
                 '0-2',
@@ -80,6 +80,18 @@ describe('Ranges', () => {
             ]);
 
             ranges.find().should.equal(3);
+        });
+    });
+
+    describe('count', () => {
+        it('should find all possible ips that are not in any range', () => {
+            let ranges = new Ranges([
+                '5-8',
+                '0-2',
+                '4-7'
+            ]);
+
+            ranges.count(9).should.equal(2);
         });
     });
 });

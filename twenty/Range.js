@@ -14,6 +14,10 @@ class Range {
     inRange(number) {
         return this.min <= number && number <= this.max;
     }
+
+    size() {
+        return this.max - this.min + 1;
+    }
 }
 
 module.exports = {

@@ -39,8 +39,7 @@ class Ranges {
 
     find() {
         const ranges = this.merge();
-        let i = 0,
-            lowest = 0;
+        let lowest = 0;
 
         for(let i = 0; i < ranges.length; i++) {
             if(ranges[i].inRange(lowest)) {
@@ -49,6 +48,13 @@ class Ranges {
         }
 
         return lowest;
+    }
+
+    count(max) {
+        const ranges = this.merge();
+        let rangeTotal = ranges.reduce((total, range) => total += range.size(), 0);
+
+        return (max+1) - rangeTotal;
     }
 }
 
