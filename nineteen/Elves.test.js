@@ -25,4 +25,11 @@ describe('Elves', () => {
             elves.solve().should.equal(1);
         });
     });
+
+    describe('solve2', () => {
+        it('should play the game with each elf stealing from the elf across from it', () => {
+            let elves = new Elves(5, true);
+            elves.solve2().should.equal(2);
+        });
+    });
 });
